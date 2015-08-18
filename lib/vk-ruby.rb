@@ -51,7 +51,7 @@ module VK
     # @see VK::Auth#authorization_url
 
     def authorization_url(options={})
-      Application.new.authorization_url(options={})
+      Application.new.authorization_url(options)
     end
 
     # Create a new application and performs site authorization
