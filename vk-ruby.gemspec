@@ -71,7 +71,7 @@ THANKS
   unless RUBY_PLATFORM == 'java'
     gem.add_development_dependency 'oj',              '~> 2.8', '>= 2.8.1'
     gem.add_development_dependency 'yajl-ruby',       '~> 1.2', '>= 1.2.0'
-    gem.add_development_dependency 'eventmachine',    '~> 1.0', '>= 1.0.3'
+    gem.add_development_dependency 'eventmachine',    '~> 1.0', '>= 1.0.4'
     gem.add_development_dependency 'em-synchrony',    '~> 1.0', '>= 1.0.3'
     gem.add_development_dependency 'em-http-request', '~> 1.1', '>= 1.1.2'
     gem.add_development_dependency 'patron',          '~> 0.4', '>= 0.4.18'
