@@ -20,7 +20,7 @@ Arguments:
   <name>  user name
   <token> vk api access token
   <code>  ruby code
-  <file>  path to file 
+  <file>  path to file
 DOCOPT
 
   DEFAULT_CONFIG_FILE = "#{ ENV['HOME'] }/.vk.yml".freeze

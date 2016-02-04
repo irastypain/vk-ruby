@@ -54,5 +54,4 @@ class VK::AuthParams < Struct.new(:config, :options)
       fail(ArgumentError, "You should pass :#{ name } parameter") if send(name).nil?
     end
   end
-  
 end

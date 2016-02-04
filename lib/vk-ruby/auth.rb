@@ -1,7 +1,6 @@
 # Authorization and authentification methods
 
 module VK::Auth
-
   # @!attribute [rw] expires_in
   #   @return [Fixnum] lifetime of the token
   attr_accessor :expires_in
@@ -20,7 +19,6 @@ module VK::Auth
   # Get current access token
   #
   # @return [String] access token (config.access_token)
-
   def access_token
     @access_token || config.access_token
   end
@@ -155,37 +153,4 @@ module VK::Auth
 
     response.body
   end
-
-  # Client/standalone authentication and authorization (see {https://vk.com/dev/auth_mobile})
-  #
-  # @param [Hash] options required for serverside authorization
-  # @option options [String] :app_id (config.app_id) application ID
-  # @option options [String] :app_secret (config.app_secret) application secret
-  # @option options [String] :settings (config.settings) application settings flag separate by comma (see {https://vk.com/dev/permissions})
-  # @option options [String] :login user login
-  # @option options [String] :password user password
-  #
-  # @return [Object] access token
-  #
-  # @raise [VK::AuthentificationError] with invalid login or password
-  # @raise [VK::APIError] with API error
-
-  def client_auth(options={})
-    params = VK::AuthParams.new(config, options)
-    params.check! :app_id, :settings, :login, :password
-
-    url = authorization_url(app_id: params.app_id, settings: params.settings, type: :client) << '&revoke=1'
-
-    browser = VK::FakeBrowser.new(config)
-    browser.sign_in! url, params.login, params.password
-    sleep 1
-    browser.authorize!
-    browser.security_hack! params.login
-
-    self.expires_in = browser.response['expires_in']
-    self.access_token = browser.response['access_token']
-
-    browser.response
-  end
-
 end

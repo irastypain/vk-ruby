@@ -20,9 +20,8 @@ module VK::Namespaces
   end
 
   module InstanceMethods
-    
     # Execute VK stored procedure (see {https://vk.com/dev/execute})
-    # 
+    #
     # @param [Hash] params execute method params
     # @option code [String] VKScript
     #
@@ -45,7 +44,7 @@ module VK::Namespaces
     end
 
     private
-    
+
     # @!attribute [r] namespace
     #   @return [String] API namespace name
     attr_reader :namespace
@@ -60,7 +59,7 @@ module VK::Namespaces
       metaclass.send(:define_method, method_name) do |params={}|
         handler.call(api_full_method, params)
       end
-      
+
       metaclass.send(:alias_method, api_method, method_name)
 
       result
