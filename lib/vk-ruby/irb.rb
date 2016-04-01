@@ -1,4 +1,3 @@
-require 'mechanize'
 require 'irb'
 require 'yaml'
 require 'highline/import'

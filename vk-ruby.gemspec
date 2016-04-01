@@ -44,41 +44,39 @@ DESCRIPTION
 ###########+ %##+: %##############
 ############+`..  %###############
 ##############%#%#################
-
       Thanks for installing!
 \n
 THANKS
 
-  gem.add_runtime_dependency 'faraday', '~> 0.9',  '>= 0.9.0'
-  gem.add_runtime_dependency 'faraday_middleware', '~> 0.9',    '>= 0.9.1'
+  gem.add_runtime_dependency 'faraday',            '~> 0.9'
+  gem.add_runtime_dependency 'faraday_middleware', '~> 0.9'
   gem.add_runtime_dependency 'multi_json',         '~> 1.11'
-  gem.add_runtime_dependency 'jruby-openssl',      '>= 0.7.7'    if RUBY_PLATFORM == 'java'
-  gem.add_runtime_dependency 'mechanize','~> 2.7', '>= 2.7'
-  gem.add_runtime_dependency 'docopt',   '~> 0.5', '>= 0.5.0'
-  gem.add_runtime_dependency 'highline', '~> 1.6', '>= 1.6.21'
+  gem.add_runtime_dependency 'jruby-openssl',      '~> 0.7'    if RUBY_PLATFORM == 'java'
+  gem.add_runtime_dependency 'docopt',             '~> 0.5'
+  gem.add_runtime_dependency 'highline',           '~> 1.6'
 
-  gem.add_development_dependency 'rake',      '~> 10.3', '>= 10.3.1'
-  gem.add_development_dependency 'rspec',     '~> 2.14', '>= 2.14.1'
-  gem.add_development_dependency 'pry',       '~> 0.9',  '>= 0.9.12.6'
-  gem.add_development_dependency 'webmock',   '~> 1.17', '>= 1.17.4'
-  gem.add_development_dependency 'json_pure', '~> 1.8',  '>= 1.8.1'
+  gem.add_development_dependency 'rake',      '~> 10.3'
+  gem.add_development_dependency 'rspec',     '~> 2.14'
+  gem.add_development_dependency 'pry',       '~> 0.9'
+  gem.add_development_dependency 'webmock',   '~> 1.24'
+  gem.add_development_dependency 'json_pure', '~> 1.8'
 
-  gem.add_development_dependency 'net-http-persistent','~> 2.9', '>= 2.9.4'
-  gem.add_development_dependency 'yard',               '~> 0.8', '>= 0.8.7.6'
-  gem.add_development_dependency 'redcarpet',          '~> 3.0', '>= 3.1.2'
-  gem.add_development_dependency 'github-markup',      '~> 1.2', '>= 1.2.1'
+  gem.add_development_dependency 'net-http-persistent', '~> 2.9'
+  gem.add_development_dependency 'yard',                '~> 0.8'
+  gem.add_development_dependency 'redcarpet',           '~> 3.1'
+  gem.add_development_dependency 'github-markup',       '~> 1.2'
 
   unless RUBY_PLATFORM == 'java'
-    gem.add_development_dependency 'oj',              '~> 2.8', '>= 2.8.1'
-    gem.add_development_dependency 'yajl-ruby',       '~> 1.2', '>= 1.2.0'
-    gem.add_development_dependency 'eventmachine',    '~> 1.0', '>= 1.0.4'
-    gem.add_development_dependency 'em-synchrony',    '~> 1.0', '>= 1.0.3'
-    gem.add_development_dependency 'em-http-request', '~> 1.1', '>= 1.1.2'
-    gem.add_development_dependency 'patron',          '~> 0.4', '>= 0.4.18'
+    gem.add_development_dependency 'oj',              '~> 2.8'
+    gem.add_development_dependency 'yajl-ruby',       '~> 1.2'
+    gem.add_development_dependency 'eventmachine',    '~> 1.0'
+    gem.add_development_dependency 'em-synchrony',    '~> 1.0'
+    gem.add_development_dependency 'em-http-request', '~> 1.1'
+    gem.add_development_dependency 'patron',          '~> 0.4'
   end
 
   if !defined?(RUBY_ENGINE) || RUBY_ENGINE != 'rbx'
-    gem.add_development_dependency 'typhoeus', '~> 0.6',  '>= 0.6.8'
+    gem.add_development_dependency 'typhoeus', '~> 0.6'
   end
 
   gem.require_paths = ['lib']
