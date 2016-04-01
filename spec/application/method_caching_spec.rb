@@ -4,10 +4,10 @@ describe VK::Application, type: :application do
   let(:application) { VK::Application.new }
 
   before do
-    stub_request(:post, /api.vk.com\/method/ ).to_return({
+    stub_request(:post, %r{api.vk.com\/method}).to_return(
       body: '{}',
-      headers: {"Content-Type" => 'application/json'}
-    })
+      headers: { 'Content-Type' => 'application/json' }
+    )
   end
 
   context 'before call "is_app_user" API method' do

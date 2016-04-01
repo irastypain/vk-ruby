@@ -1,70 +1,52 @@
 # CLI params wrapper
 
-class VK::IRB::Params < Struct.new(:docopt)
-  DOCOPT = <<-DOCOPT
-vk interactive ruby shell #{ VK::VERSION }
+module VK
+  class IRB
+    Params = Struct.new(:docopt) do
+      DEFAULT_CONFIG_FILE = "#{ENV['HOME']}/.vk.yml".freeze
 
-Usage:
-  vk list [options]
-  vk add <name> [<token>]
-  vk update <name> [<token>]
-  vk remove <name>
-  vk <name> [options]
+      def list?
+        docopt['list']
+      end
 
-Options:
-  --eval=<code>    evaluate ruby code
-  --execute=<file> execute ruby file
-  --config=<file>  config file, default ./.vk.yml or ~/.vk.yml
+      def add?
+        docopt['add']
+      end
 
-Arguments:
-  <name>  user name
-  <token> vk api access token
-  <code>  ruby code
-  <file>  path to file
-DOCOPT
+      def remove?
+        docopt['remove']
+      end
 
-  DEFAULT_CONFIG_FILE = "#{ ENV['HOME'] }/.vk.yml".freeze
+      def update?
+        docopt['update']
+      end
 
-  def list?
-    docopt['list']
-  end
+      def eval?
+        docopt['--eval'] || docopt['-e']
+      end
 
-  def add?
-    docopt['add']
-  end
+      alias_method :evaluated_code, :eval?
 
-  def remove?
-    docopt['remove']
-  end
+      def execute?
+        docopt['--execute'] || docopt['-ex']
+      end
 
-  def update?
-    docopt['update']
-  end
+      alias_method :executed_file, :execute?
 
-  def eval?
-    docopt['--eval'] or docopt['-e']
-  end
+      def user_name
+        docopt['<name>']
+      end
 
-  alias evaluated_code eval?
+      def token
+        docopt['<token>']
+      end
 
-  def execute?
-    docopt['--execute'] or docopt['-ex']
-  end
-
-  alias executed_file execute?
-
-  def user_name
-    docopt['<name>']
-  end
-
-  def token
-    docopt['<token>']
-  end
-
-  def config_file
-    @config_file ||= [
-      docopt['--config'],
-      "#{ ENV['PWD'] }/.vk.yml"
-    ].compact.detect {|f| File.exists?(f) } || DEFAULT_CONFIG_FILE
+      def config_file
+        @config_file ||= [
+          docopt['--config'],
+          "#{ENV['PWD']}/.vk.yml"
+        ].compact.detect { |f| File.exist?(f) } || DEFAULT_CONFIG_FILE
+      end
+    end
   end
 end

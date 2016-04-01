@@ -1,11 +1,10 @@
 module MiddlewareGroup
-
   def self.included(base)
     base.let(:options) { Hash.new }
     base.let(:url)     { URI.parse('https://api.vk.com') }
     base.let(:status)  { 200 }
     base.let(:headers) { Hash.new }
-    
+
     base.let(:middleware) do
       if described_class.method(:new).parameters.count == 2
         described_class.new ->(env) { Faraday::Response.new(env) }, options
@@ -23,5 +22,4 @@ module MiddlewareGroup
       env.body = body
     }
   end
-  
 end

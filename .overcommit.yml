@@ -1,0 +1,23 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    command: ["bundle", "exec", "rubocop", "-c .rubocop.yml"]
+    include:
+      - '**/*.gemspec'
+      - '**/*.rake'
+      - '**/*.rb'
+      - '**/Gemfile'
+      - '**/Rakefile'
+
+  TrailingWhitespace:
+    enabled: true
+    description: 'Checking for trailing whitespace'
+    required_executable: 'grep'
+    flags: ['-IHn', "[ \t]$"]
+
+PrePush:
+  RSpec:
+    enabled: true
+    description: "Running RSpec test suite"
+    required_executable: 'rspec'

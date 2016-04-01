@@ -20,29 +20,28 @@ VK.configure do |default|
     faraday.response :json, content_type: /\bjson$/
     faraday.response :http_errors
 
-    faraday.adapter  Faraday.default_adapter
+    faraday.adapter Faraday.default_adapter
   end
 end
 
 RSpec.configure do |config|
   config.order = 'random'
-  
+
   config.include ApplicationGroup, type: :application
   config.include MiddlewareGroup,  type: :middleware
   config.include ErrorGroup,       type: :exception
   config.include IntegrationGroup, type: :integration
 
-  unless ENV['INTEGRATION'] || File.exists?('./support/credentials.yml')
+  unless ENV['INTEGRATION'] || File.exist?('./support/credentials.yml')
     config.filter_run_excluding type: :integration
   end
 end
 
 class String
   def to_params
-    self.split('&').inject({}) do |hash, element|
+    split('&').each_with_object({}) do |element, hash|
       k, v = element.split('=')
       hash[k] = v
-      hash
     end
   end
 end

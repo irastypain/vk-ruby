@@ -4,33 +4,35 @@ describe VK::Config do
   it { VK::Application.new.config.should eq(VK.config) }
 
   describe 'merge config' do
-    let(:options) {{
-      app_id:  'new_app_id',
-      app_secret: 'new_app_secret',
-      version: 'new_version',
-      redirect_uri: 'new_redirect_uri',
-      settings: 'new_settings',
-      verb: 'new_verb',
-      host: 'new_host', 
-      timeout: 'new_timeout',
-      open_timeout: 'new_open_timeout',
-      middlewares: proc{},
-      parallel_manager: Object.new,
-      proxy: { 
-        uri: 'http://host:8080',
-        user: 'new_user', 
-        password: 'new_password'
-      },
-      ssl: {
-        verify: false,
-        verify_mode: false,
-        ca_file: 'new_ca_file',
-        ca_path: 'new_ca_path'
+    let(:options) do
+      {
+        app_id:  'new_app_id',
+        app_secret: 'new_app_secret',
+        version: 'new_version',
+        redirect_uri: 'new_redirect_uri',
+        settings: 'new_settings',
+        verb: 'new_verb',
+        host: 'new_host',
+        timeout: 'new_timeout',
+        open_timeout: 'new_open_timeout',
+        middlewares: proc {},
+        parallel_manager: Object.new,
+        proxy: {
+          uri: 'http://host:8080',
+          user: 'new_user',
+          password: 'new_password'
+        },
+        ssl: {
+          verify: false,
+          verify_mode: false,
+          ca_file: 'new_ca_file',
+          ca_path: 'new_ca_path'
+        }
       }
-    }}
+    end
 
     let(:application) { VK::Application.new(options) }
-    
+
     subject { application.config }
 
     its(:app_id)           { should eq(options[:app_id]) }
@@ -54,5 +56,4 @@ describe VK::Config do
     it { expect(application.config.proxy.user).to eq(options[:proxy][:user]) }
     it { expect(application.config.proxy.password).to eq(options[:proxy][:password]) }
   end
-
 end

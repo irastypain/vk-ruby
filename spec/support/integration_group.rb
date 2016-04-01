@@ -1,5 +1,4 @@
 module IntegrationGroup
-
   def self.included(base)
     base.before(:all) {  WebMock.allow_net_connect! }
     base.after(:all)  {  WebMock.disable_net_connect! }
@@ -16,5 +15,4 @@ module IntegrationGroup
   def credentials
     @credentials ||= YAML.load_file(File.expand_path('../credentials.yml', __FILE__))
   end
-
 end

@@ -1,10 +1,13 @@
 # CLI context
 
-class VK::IRB::Context < VK::Application
+module VK
+  class IRB
+    class Context < VK::Application
+      attr_reader :config
 
-  attr_reader :config
-
-  def initialize(config)
-    @config = config
+      def initialize(config)
+        @config = config
+      end
+    end
   end
 end

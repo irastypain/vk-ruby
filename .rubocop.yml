@@ -1,0 +1,32 @@
+AllCops:
+  RunRailsCops: false
+
+  # Exclude:
+  #   - "spec/**/*"
+
+Documentation:
+    Enabled: false
+
+LineLength:
+  Max: 200
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/FileName:
+  Enabled: false
+
+Style/RaiseArgs:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false

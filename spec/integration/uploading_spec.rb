@@ -8,10 +8,10 @@ describe 'File uploading', type: :integration do
 
   it 'docs uploading' do
     result = application.docs.getUploadServer
-    
+
     expect(result).to be_a(Hash)
     expect(result['upload_url']).not_to be_nil
-    
+
     result = application.upload result['upload_url'], file: [path, mime]
 
     expect(result).to be_a(Hash)
@@ -30,5 +30,4 @@ describe 'File uploading', type: :integration do
       expect(r['url']).not_to be_nil
     end
   end
-
 end

@@ -1,19 +1,19 @@
 # encoding: utf-8
 
-$:.push File.expand_path('../lib', __FILE__)
-require  'vk-ruby/version'
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+require 'vk-ruby/version'
 
 Gem::Specification.new do |gem|
-  gem.name = "vk-ruby"
-  gem.licenses = ["MIT"]
+  gem.name = 'vk-ruby'
+  gem.licenses = ['MIT']
   gem.version = VK::VERSION
   gem.date = Time.now.strftime '%Y-%m-%d'
 
-  gem.authors = ["Andrew Zinenko"]
-  gem.email = "andrew@izinenko.ru"
-  gem.homepage = "http://github.com/zinenko/vk-ruby"
+  gem.authors = ['Andrew Zinenko']
+  gem.email = 'andrew@izinenko.ru'
+  gem.homepage = 'http://github.com/zinenko/vk-ruby'
 
-  gem.summary = "Ruby wrapper for vk.com API"
+  gem.summary = 'Ruby wrapper for vk.com API'
 
   gem.description = <<-DESCRIPTION
 VK-RUBY gives you full access to all vk.com API features.
@@ -65,6 +65,8 @@ THANKS
   gem.add_development_dependency 'yard',                '~> 0.8'
   gem.add_development_dependency 'redcarpet',           '~> 3.1'
   gem.add_development_dependency 'github-markup',       '~> 1.2'
+  gem.add_development_dependency 'overcommit',          '~> 0.27'
+  gem.add_development_dependency 'rubocop'
 
   unless RUBY_PLATFORM == 'java'
     gem.add_development_dependency 'oj',              '~> 2.8'
@@ -83,5 +85,5 @@ THANKS
   gem.files = `git ls-files -z`.split("\x0")
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.executables =  gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  gem.extra_rdoc_files = ["LICENSE.txt", "README.md" ]
+  gem.extra_rdoc_files = ['LICENSE.txt', 'README.md']
 end

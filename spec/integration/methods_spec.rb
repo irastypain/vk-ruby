@@ -1,7 +1,6 @@
 require 'helpers'
 
 describe 'API method calling', type: :integration do
-
   context 'without authorization' do
     it '#users.get' do
       result = application.users.get(user_ids: 1).first
@@ -25,5 +24,4 @@ describe 'API method calling', type: :integration do
       expect(result['first_name']).not_to be_empty
     end
   end
-
 end

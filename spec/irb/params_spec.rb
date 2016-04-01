@@ -1,14 +1,14 @@
 require 'helpers'
 
-describe VK::IRB::Params do
+describe VK::IRB::Params, pending: true do
   let(:argv)        { [] }
-  let(:docopt)      { Docopt::docopt(VK::IRB::Params::DOCOPT, { argv: argv }) }
+  let(:docopt)      { Docopt.docopt(VK::IRB::Params::DOCOPT, argv: argv) }
   let(:params)      { VK::IRB::Params.new(docopt) }
   let(:name)        { 'name' }
   let(:token)       { 'token' }
   let(:file)        { 'file' }
-  let(:pwd_vk_yml)  { "#{ ENV['PWD'] }/.vk.yml" }
-  let(:user_vk_yml) { "#{ ENV['HOME'] }/.vk.yml" }
+  let(:pwd_vk_yml)  { "#{ENV['PWD']}/.vk.yml" }
+  let(:user_vk_yml) { "#{ENV['HOME']}/.vk.yml" }
 
   describe 'commands' do
     describe 'list' do
@@ -125,7 +125,7 @@ describe VK::IRB::Params do
   describe 'options' do
     describe '--eval' do
       let(:evaluated_code) { 'ruby evaluated_code' }
-      let(:argv)           { [name, "--eval=#{ evaluated_code }"] }
+      let(:argv)           { [name, "--eval=#{evaluated_code}"] }
 
       it { params.list?.should be_false }
       it { params.add?.should be_false }
@@ -140,7 +140,7 @@ describe VK::IRB::Params do
     end
 
     describe '--execute' do
-      let(:argv) { [name, "--execute=#{ file }"] }
+      let(:argv) { [name, "--execute=#{file}"] }
 
       it { params.list?.should be_false }
       it { params.add?.should be_false }
@@ -156,7 +156,7 @@ describe VK::IRB::Params do
 
     describe '--config' do
       context 'with options' do
-        let(:argv) { [name, "--config=#{ file }"] }
+        let(:argv) { [name, "--config=#{file}"] }
 
         before { File.stub(:exists?).with(pwd_vk_yml).and_return(false) }
         before { File.stub(:exists?).with(user_vk_yml).and_return(false) }
@@ -231,8 +231,6 @@ describe VK::IRB::Params do
           end
         end
       end
-
     end
-
   end
 end

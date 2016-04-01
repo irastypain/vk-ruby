@@ -1,27 +1,25 @@
 require 'helpers'
 
 describe VK::AuthParams do
-  let(:config)  { VK::Config.new({
-      app_id:  'new_app_id',
-      app_secret: 'new_app_secret',
-      version: 'new_version',
-      redirect_uri: 'new_redirect_uri',
-      settings: 'new_settings',
-      verb: 'new_verb',
-      host: 'new_host', 
-      timeout: 'new_timeout',
-      open_timeout: 'new_open_timeout',
-      middlewares: proc{},
-      parallel_manager: Object.new,
-      proxy: { user: 'new_user', password: 'new_password'},
-      ssl: {
-        verify: false,
-        ca_file: 'new_ca_file',
-        ca_path: 'new_ca_path'
-      }
-    })
-  }
-
+  let(:config)  do
+    VK::Config.new(app_id:  'new_app_id',
+                   app_secret: 'new_app_secret',
+                   version: 'new_version',
+                   redirect_uri: 'new_redirect_uri',
+                   settings: 'new_settings',
+                   verb: 'new_verb',
+                   host: 'new_host',
+                   timeout: 'new_timeout',
+                   open_timeout: 'new_open_timeout',
+                   middlewares: proc {},
+                   parallel_manager: Object.new,
+                   proxy: { user: 'new_user', password: 'new_password' },
+                   ssl: {
+                     verify: false,
+                     ca_file: 'new_ca_file',
+                     ca_path: 'new_ca_path'
+                   })
+  end
 
   # check
 
@@ -42,17 +40,19 @@ describe VK::AuthParams do
   end
 
   context 'with options' do
-    let(:options) {{
-      code: :code,
-      app_id: :app_id,
-      app_secret: :app_secret,
-      version: '6.0',
-      redirect_url: 'http://example.com',
-      settings: 'foo,bar',
-      display: :display_type,
-      login: :user_login,
-      password: :user_password
-    }}
+    let(:options) do
+      {
+        code: :code,
+        app_id: :app_id,
+        app_secret: :app_secret,
+        version: '6.0',
+        redirect_url: 'http://example.com',
+        settings: 'foo,bar',
+        display: :display_type,
+        login: :user_login,
+        password: :user_password
+      }
+    end
 
     it { expect(params.code).to eq(options[:code]) }
     it { expect(params.app_id).to eq(options[:app_id]) }
@@ -64,6 +64,5 @@ describe VK::AuthParams do
     it { expect(params.type).to be_nil }
     it { expect(params.login).to eq(options[:login]) }
     it { expect(params.password).to eq(options[:password]) }
-
   end
 end

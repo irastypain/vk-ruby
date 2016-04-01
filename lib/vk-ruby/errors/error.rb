@@ -1,9 +1,11 @@
 # Error implementation
 
-class VK::Error < StandardError
-  extend Forwardable
+module VK
+  class Error < StandardError
+    extend Forwardable
 
-  def initialize(env)
-    @env = env
+    def initialize(env)
+      @env = env
+    end
   end
 end

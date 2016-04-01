@@ -1,6 +1,5 @@
 #VK-RUBY
 [![Build Status](https://secure.travis-ci.org/zinenko/vk-ruby.png)](http://travis-ci.org/zinenko/vk-ruby)
-[![Code Climate](https://codeclimate.com/github/zinenko/vk-ruby/badges/gpa.svg)](https://codeclimate.com/github/zinenko/vk-ruby)
 [![Gem Version](https://badge.fury.io/rb/vk-ruby.svg)](http://badge.fury.io/rb/vk-ruby)
 [![Dependency Status](https://gemnasium.com/zinenko/vk-ruby.svg)](https://gemnasium.com/zinenko/vk-ruby)
 
@@ -322,10 +321,12 @@ Read more [middleware usage](https://github.com/lostisland/faraday#advanced-midd
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
 * Start a feature/bugfix branch
+* Install dependencies
+* Install overcommit `overcommit --install`
 * Commit and push until you are happy with your contribution
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 
 ## Copyright
 
-Copyright (c) 2014 [Andrew Zinenko](http://izinenko.ru).
+Copyright (c) 2016 [Andrew Zinenko](http://izinenko.ru).
 See LICENSE.txt for further details.

@@ -2,20 +2,20 @@
 
 require 'rubygems'
 
-$:.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'vk-ruby'
 require 'vk-ruby/irb'
 
 VK.configure do |default|
-  default.app_id = 4505011
+  default.app_id = 4_505_011
 end
 
 begin
-  docopt = Docopt::docopt(VK::IRB::Params::DOCOPT)
+  docopt = Docopt.docopt(VK::IRB::Params::DOCOPT)
   VK::IRB.new(docopt).run!
-rescue Docopt::Exit => e
+rescue Docopt::Exit
   puts VK::IRB::Params::DOCOPT
-rescue Exception => e
+rescue StandardError => e
   puts e
 end

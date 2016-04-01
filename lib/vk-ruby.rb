@@ -30,7 +30,6 @@ require 'vk-ruby/errors/bad_response'
 
 module VK
   class << self
-
     # Global config
     def config
       @config ||= VK::Config.new
@@ -48,7 +47,7 @@ module VK
     #
     # @see VK::Auth#authorization_url
 
-    def authorization_url(options={})
+    def authorization_url(options = {})
       Application.new.authorization_url(options)
     end
 
@@ -56,7 +55,7 @@ module VK
     #
     # @see VK::Auth#site_auth
 
-    def site_auth(options={})
+    def site_auth(options = {})
       Application.new(options).tap { |app| app.site_auth(code: options[:code]) }
     end
 
@@ -64,8 +63,8 @@ module VK
     #
     # @see VK::Auth#server_auth
 
-    def server_auth(options={})
-      Application.new(options).tap { |app| app.server_auth }
+    def server_auth(options = {})
+      Application.new(options).tap(&:server_auth)
     end
   end
 end
