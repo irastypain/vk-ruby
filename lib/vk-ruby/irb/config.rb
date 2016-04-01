@@ -82,5 +82,4 @@ class VK::IRB::Config < Struct.new(:path, :app_name, :users, :context_config)
       h.delete(:middlewares)
     }
   end
-
 end
