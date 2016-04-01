@@ -2,7 +2,7 @@
 
 module VK::Core
 
-  # Get current application config 
+  # Get current application config
   #
   # @return [VK::Config] application config
   def config
@@ -10,13 +10,13 @@ module VK::Core
   end
 
   # Calling API method
-  # 
+  #
   # @param method_name [String] API method name (see {https://vk.com/dev/methods})
   # @param params [Hash] API method params (see {https://vk.com/dev/methods})
   #
   # @return [String] server response
   #
-  # @example get information about Pavel Durov 
+  # @example get information about Pavel Durov
   #   VK::Application.new.vk_call 'users.get', user_ids: 1 #=> [{"id"=>1, "first_name"=>"Павел", "last_name"=>"Дуров"}]
 
   def vk_call(method_name, params = {})
@@ -43,8 +43,8 @@ module VK::Core
   #   end
   #
   #   puts uids #=> {
-  #     1 => {"id"=>1, "first_name"=>"Павел", "last_name"=>"Дуров"}, 
-  #     2 => {"id"=>2, "first_name"=>"Александра", "last_name"=>"Владимирова", "hidden"=>1}, 
+  #     1 => {"id"=>1, "first_name"=>"Павел", "last_name"=>"Дуров"},
+  #     2 => {"id"=>2, "first_name"=>"Александра", "last_name"=>"Владимирова", "hidden"=>1},
   #     3 => {"id"=>3, "first_name"=>"DELETED", "last_name"=>"", "deactivated"=>"deleted"}
   #   }
   #
@@ -72,7 +72,7 @@ module VK::Core
       else
         req.params = params.query
       end
-      
+
       yield(req) if block_given?
     end
   end

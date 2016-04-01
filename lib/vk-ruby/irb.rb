@@ -36,7 +36,7 @@ class VK::IRB
       execute_file!
     else
       start_session!
-    end  
+    end
   end
 
   private
@@ -118,7 +118,7 @@ class VK::IRB
     say "User '#{ params.user_name }' does not exists." unless user
     setup
     ::IRB.conf[:MAIN_CONTEXT] = irb.context
-    
+
     begin
       trap("SIGINT")   { irb.signal_handle }
       catch(:IRB_EXIT) { irb.eval_input }
@@ -135,10 +135,10 @@ class VK::IRB
       PROMPT_S: "... ",
       PROMPT_C: "> ",
       PROMPT_N: "> ",
-      RETURN: "#=> %s\n" 
+      RETURN: "#=> %s\n"
     }
   end
-  
+
   def resolve_access_token
     login = ask "login: " do |question|
       question.echo = false

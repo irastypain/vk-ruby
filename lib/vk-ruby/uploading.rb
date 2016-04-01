@@ -13,7 +13,7 @@ module VK::Uploading
   #   application.upload(
   #     'http://example.vk.com/path',{
   #       file1: ['/path/to/file1.jpg', 'image/jpeg'],
-  #       file2: [io, 'image/png', '/path/to/file2.png'] 
+  #       file2: [io, 'image/png', '/path/to/file2.png']
   #   })
   #
   # @example Upload with array list
@@ -38,7 +38,7 @@ module VK::Uploading
         acc
       end
     end
-    
+
     request(params) { |req| req.url(url) }.body
   end
 end

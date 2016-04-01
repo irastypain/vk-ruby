@@ -2,7 +2,7 @@
 
 class VK::Methods
   # includes "VK::Namespaces"
-  # 
+  #
   # @!parse include VK::Namespaces
 
   include VK::Namespaces

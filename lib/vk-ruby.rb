@@ -22,7 +22,6 @@ require 'vk-ruby/uploading'
 require 'vk-ruby/application'
 require 'vk-ruby/params'
 require 'vk-ruby/auth_params'
-require 'vk-ruby/fake_browser'
 
 require 'vk-ruby/errors/error'
 require 'vk-ruby/errors/api_error'
@@ -37,7 +36,7 @@ module VK
     def config
       @config ||= VK::Config.new
     end
-    
+
     # Configure VK-RUBY
     #
     # @yieldparam config [VK::Config] global config
@@ -69,19 +68,5 @@ module VK
     def server_auth(options={})
       Application.new(options).tap { |app| app.server_auth }
     end
-
-    # Create a new application and performs client authorization
-    #
-    # @see VK::Auth#client_auth
-
-    def client_auth(options={})
-      Application.new(options).tap do |app| 
-        app.client_auth({
-          login: options[:login],
-          password: options[:password]
-        })
-      end
-    end
-
   end
 end

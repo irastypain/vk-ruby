@@ -2,7 +2,7 @@
 
 class VK::Application
   # includes "VK::Core", "VK::Auth", "VK::Uploading" and "VK::Namespaces"
-  # 
+  #
   # @!parse include VK::Core
   # @!parse include VK::Auth
   # @!parse include VK::Uploading

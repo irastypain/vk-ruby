@@ -168,18 +168,17 @@ app.server_auth(app_id: '[APP_ID]', app_secret: '[SECRET]') #=> { "access_token"
 
 #### Standalone (Client)
 
-__VK__ have a client authentication method, it implies a use of using a browser on the client (for example, `UIWebView` component when creating applications for __iOS__). In __RUBY__ we can not afford it, and so we use the [Mechanize](https://rubygems.org/gems/mechanize). Most likely it is contrary to the rules of use API, so be careful ;-)
-
-__VK__ implies that the authorization process will consist of three steps:
-
-- Opening the browser to authenticate the user on the site __VK__
-- Permit the user to access their data
-- Transfer to the application key `access_token` to access the API
-
-But __VK-RUBY__ reduces this process in just a single method call
-
 ```.ruby
-app.client_auth(login: '[LOGIN]', password: '[PASSWORD]') #=> { "access_token" : '[TOKEN]', "expires_in" : "100500"} }
+app.authorization_url({
+  type: :client,
+  app_id: 123,
+  settings: 'friends,audio',
+  version: '5.26',
+  redirect_uri: 'https://example.com/',
+  display: :mobile
+})
+
+# => "https://oauth.vk.com/authorize?client_id=123&scope=friends%2Caudio&redirect_uri=https%3A%2F%2Foauth.vk.com%2Fblank.html&display=mobile&response_type=token&v=5.26"
 ```
 
 ### Configuration
@@ -262,7 +261,7 @@ It is an __HTTP__ client lib that provides a common interface over many adapters
 
 #### Default stack
 
-This stack consists of standard `:multipart`,`:url_encoded`, `:json` middlewares, details of which are looking at [here] (https://github.com/lostisland/faraday#advanced-middleware-usage).
+This stack consists of standard `:multipart`,`:url_encoded`, `:json` middlewares, details of which are looking at [here](https://github.com/lostisland/faraday#advanced-middleware-usage).
 
 Are also used:
 
