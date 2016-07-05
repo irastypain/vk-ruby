@@ -26,6 +26,10 @@ module VK
       @request_params ||= @env.body['error']['request_params'].each_with_object({}) { |a, e| a[e['key']] = e['value'] }
     end
 
+    def redirect_uri
+      @redirect_uri ||= @env.body['redirect_uri']
+    end
+
     alias_method :params, :request_params
 
     def to_s
