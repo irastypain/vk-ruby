@@ -27,7 +27,7 @@ module VK
     end
 
     def redirect_uri
-      @redirect_uri ||= @env.body['redirect_uri']
+      @redirect_uri ||= @env.body['error']['redirect_uri']
     end
 
     alias_method :params, :request_params
