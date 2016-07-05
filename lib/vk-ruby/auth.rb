@@ -79,6 +79,12 @@ module VK
                                                                  redirect_uri: params.redirect_url,
                                                                  response_type: :token,
                                                                  v: params.version)
+      when :code
+        "https://oauth.vk.com/authorize?" << URI.encode_www_form(client_id: params.app_id,
+                                                                 scope: params.settings,
+                                                                 redirect_uri: params.redirect_url,
+                                                                 response_type: :code,
+                                                                 v: params.version)
       end
     end
 
