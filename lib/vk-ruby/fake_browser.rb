@@ -14,7 +14,7 @@ class VK::FakeBrowser
   rescue Exception => ex
     raise VK::AuthentificationError.new({
       error: 'Authentification error',
-      description: 'invalid loging or password'
+      description: 'invalid login or password'
     })
   end
 
@@ -41,14 +41,14 @@ class VK::FakeBrowser
                  .body
                  .gsub("\n",'')
                  .gsub("  ",'')
-                 .match(/.*function allow\(\)\s?\{.*}location.href\s?=\s?[\'\"\s](.+?)[\'\"].+\}/)
+                 .match(/.*allow\(.*\)\s?\{.*}location\.href\s?=\s?[\\]?[\'\"](.+)[\\]?[\'\"][\+].+\}/)
                  .to_a
                  .last
       agent.get(url)
     else
       raise VK::AuthentificationError.new({
         error: 'Authorization error',
-        description: 'invalid loging or password'
+        description: 'invalid login or password'
       })
     end
   end
